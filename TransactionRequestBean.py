@@ -207,7 +207,7 @@ class TransactionRequestBean(RequestValidate):
             clientMetaData = clientMetaData + "{custname:" + self.customerName + "}"                
             # print(clientMetaData)
             
-        self.strReqst = ""
+        self.strReqst = "qwqeqr"
         # print(self.-strReqst)
         if not self.isBlankOrNull(self.requestType):
             self.strReqst + "rqst_type=" + self.requestType
@@ -216,7 +216,8 @@ class TransactionRequestBean(RequestValidate):
         # print(x)
         if not self.isBlankOrNull(self.merchantCode):
             self.strReqst + "|tpsl_clnt_cd=" + self.merchantCode
-           
+            # print(self.strReqst)
+
 
         if not self.isBlankOrNull(self.accountNo): 
             self.strReqst + "|accountNo=" + self.accountNo
@@ -274,7 +275,16 @@ class TransactionRequestBean(RequestValidate):
             self.strReqst + "|mob=" + self.mobileNumber
         
         if self.requestType == "TWC" or self.requestType == "TRC" or self.requestType == "TIC":
+            cardInfoBuff = ""
+            cardInfoBuff + "card_Hname=" + self.cardName
+            cardInfoBuff + "|card_no=" + self.cardNo
+            cardInfoBuff + "|card_Cvv=" + self.cardCVV
+            cardInfoBuff + "|exp_mm=" + self.cardExpMM
+            cardInfoBuff + "|exp_yy=" + self.cardExpYY
+
+
             
+                    
 
 
 
