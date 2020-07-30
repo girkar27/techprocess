@@ -1,7 +1,7 @@
 
 
 class AES:
-	M_CBC = 'cbc'
+    M_CBC = 'cbc'
     M_CFB = 'cfb'
     M_ECB = 'ecb'
     M_NOFB = 'nofb'
@@ -12,11 +12,16 @@ class AES:
     AES_CIPHER_256 = 'aes-256'
 
 
-    def __init__(self, data=None, key=None, blockSize=None, mode=None, iv):
-    	self.data = data
-    	self.key = key
-    	self.blockSize = blockSize
-    	self.mode = mode
-    	self.iv = iv
+    def __init__(self, data=None, key=None, blockSize=None, mode=None, iv=None):
+        self.data = data
+        self.key = key
+        self.blockSize = blockSize
+        self.mode = mode
+        self.iv = iv
 
+    def set(self, field, value):
+        self.field = value
+        print(value)
 
+x = AES()
+x.set(34, 12)

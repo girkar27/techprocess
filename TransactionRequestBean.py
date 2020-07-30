@@ -1,5 +1,7 @@
 
 from RequestValidate import RequestValidate
+import time
+
 
 class TransactionRequestBean(RequestValidate):
     # def __init__(self):
@@ -9,13 +11,13 @@ class TransactionRequestBean(RequestValidate):
 
     separator = "|"
 
-    requestType= ""
+    requestType= "T"
 
     merchantCode = ""
 
     merchantTxnRefNumber = ""
 
-    ITC = "jai"
+    ITC = ""
 
     amount = ""
 
@@ -283,12 +285,33 @@ class TransactionRequestBean(RequestValidate):
             cardInfoBuff + "|exp_yy=" + self.cardExpYY
 
 
+    def getTransactionToken(self):
+        # time.sleep(self.timeOut)
+        # print(self.timeOut)
+        params =  {}
+        params['pReqType'] = self.requestType
+        params['pMerCode'] = self.merchantCode
+        params['pEncKey'] = self.key
+        params['pEncIv'] = self.iv
+        # print(params['pReqType'])
+        errorResponse = self.validateRequestParam(params)
+        if errorResponse:
+            return errorResponse
+
+        encryptedData = self.getEncryptedData();
+
+           
+        if not encryptedData: 
+            print('no')
+            
+
+        postData = encryptedData + "|" + self.merchantCode + "~";
             
                     
 
 
 
 
-x = TransactionRequestBean()
-x.getEncryptedData()
+# x = TransactionRequestBean()
+# x.getTransactionToken()
 
